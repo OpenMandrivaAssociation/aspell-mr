@@ -11,9 +11,10 @@
 Summary:       %{languageenglazy} files for aspell
 Name:          aspell-%{languagecode}
 Version:       0.10.0
-Release:       %mkrel 6
+Release:       %mkrel 7
 Group:         System/Internationalization
 Source:        http://ftp.gnu.org/gnu/aspell/dict/%{languagecode}/%{fname}-%{src_ver}.tar.bz2
+Patch1:        marathi-specific-chars-426943.patch
 URL:		   http://aspell.net/
 License:	   GPL
 BuildRoot:     %{_tmppath}/%{name}-%{version}-root
@@ -37,6 +38,9 @@ A %{languageenglazy} dictionary for use with aspell, a spelling checker.
 
 %prep
 %setup -q -n %{fname}-%{src_ver}
+%patch1 -p0
+mv u-deva.cset u-deva-mr.cset
+mv u-deva.cmap u-deva-mr.cmap
 
 %build
 # don't use configure macro
