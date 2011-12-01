@@ -49,14 +49,14 @@ mv u-deva.cmap u-deva-mr.cmap
 %make
 
 %install
-rm -fr $RPM_BUILD_ROOT
+rm -fr %{buildroot}
 
 %makeinstall_std
 
 chmod 644 Copyright README* 
 
 %clean
-rm -fr $RPM_BUILD_ROOT
+rm -fr %{buildroot}
 
 %files
 %defattr(-,root,root)
